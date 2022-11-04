@@ -14,7 +14,7 @@ public class GAPI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Instantiate(monster,00,00);
+
     }
 }
 
