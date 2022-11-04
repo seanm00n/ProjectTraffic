@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using System;
 
-public class UI_EventHandler : MonoBehaviour
+public class UI_EventHandler : MonoBehaviour, IPointerClickHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public Action<PointerEventData> OnClicked = null; 
+    public void OnPointerClick(PointerEventData eventData)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (OnClicked != null)
+            OnClicked.Invoke(eventData);
     }
 }
