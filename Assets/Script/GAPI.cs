@@ -14,27 +14,6 @@ public class GAPI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Instantiate(monster,00,00);
+        
     }
-}
-
-
-class Monster { 
-    
-}
-class DefaultAttack
-{
-
-}
-class AttackDecorator
-{
-
-}
-class RangeAttack
-{
-
-}
-
-class BressAttack {
-
 }
