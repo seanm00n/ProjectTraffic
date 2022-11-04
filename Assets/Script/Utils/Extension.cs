@@ -16,6 +16,6 @@ public static class Extension
 
     static public GameObject FindChild(this GameObject go, string name = null, bool recursive = false)
     {
-        return FindChile(go, name, recursive);
+        return FindChild(go, name, recursive);
     }
 }

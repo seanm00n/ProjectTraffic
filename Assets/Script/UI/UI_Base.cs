@@ -54,5 +54,3 @@ public class UI_Base : MonoBehaviour
 
     }
 }
-
-    

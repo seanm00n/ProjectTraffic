@@ -4,5 +4,12 @@ using UnityEngine;
 
 public class UI_Popup : UI_Base
 {
-    
+    protected void ClosePopupUI()
+    {
+        GameManager.UI.ClosePopupUI();
+    }
+    protected void CloseAllPopupUI()
+    {
+        GameManager.UI.CloseAllPopupUI();
+    }
 }
