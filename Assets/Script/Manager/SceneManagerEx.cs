@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerEx
 {
-    // define 되어있는 씬만 로드할 수 있게 함
+    // define되어있는 씬만 로드할 수 있게 함
     public void LoadScene(Define.Scene scene)
     {
         SceneManager.LoadScene(GetSceneName(scene));
