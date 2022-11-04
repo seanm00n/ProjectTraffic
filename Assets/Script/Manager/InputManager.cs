@@ -4,23 +4,33 @@ using UnityEngine;
 using System;
 using UnityEngine.EventSystems;
 
-public class InputMnager : IDragHandler, IPointerClickHandler
+public class InputMnager
 {
-    delegate void mouseAction();
+    public Action<Define.clickEvent> mouseAction;
 
-    void OnUpdate()
-    {
-            
-    }
+    bool mousePressed;
 
-    public void OnDrag(PointerEventData eventData)
+    public void OnUpdate()
     {
-        
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            if (mouseAction != null)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    mouseAction.Invoke(Define.clickEvent.Down);
+                    mousePressed = true;
+                }
+                if (Input.GetMouseButtonDown(0) && mousePressed)
+                {
+                    mouseAction.Invoke(Define.clickEvent.Drag);
+                }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    mouseAction.Invoke(Define.clickEvent.Up);
+                }
+            }
+        }
     }
 }
 
