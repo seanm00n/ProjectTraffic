@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.EventSystems;
 
-public class InputMnager : MonoBehaviour
+public class InputMnager : IDragHandler, IPointerClickHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    delegate void mouseAction();
+
+    void OnUpdate()
+    {
+            
+    }
+
+    public void OnDrag(PointerEventData eventData)
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerClick(PointerEventData eventData)
     {
         
     }
 }
+
