@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameScene : BaseScene
+public class Stage2 : BaseScene
 {
     override protected void Init()
     {
@@ -15,3 +15,4 @@ public class GameScene : BaseScene
 
 
 }
+

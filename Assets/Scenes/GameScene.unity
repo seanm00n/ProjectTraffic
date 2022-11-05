@@ -205,7 +205,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &987832610
 GameObject:
@@ -280,12 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b30d3f32f3f51f4289dee916b2deb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: 0
-  species: 1
-  m_currentCarNum: 0
-  carNumber: 0
   MAX_CAR_NUM: 10
-  prefab: {fileID: 8476875836286899031, guid: 216a192f0c39d6545a26d1193b0837dc, type: 3}
 --- !u!4 &1689959753
 Transform:
   m_ObjectHideFlags: 0
@@ -299,7 +294,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7051496284405204081
 PrefabInstance:
@@ -310,7 +305,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7051496284513233724, guid: dfe6d8a9cdf182c4681a42dcdcbfeae1, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7051496284513233724, guid: dfe6d8a9cdf182c4681a42dcdcbfeae1, type: 3}
       propertyPath: m_LocalPosition.x
