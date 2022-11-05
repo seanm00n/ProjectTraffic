@@ -14,7 +14,7 @@ public class GameController01 : MonoBehaviour
     public struct CAR
     {
         public int number;
-        public int xPos;
+        public Vector3 vec3;
         public int genTime;
         public Destination destination;
         public Species species;
@@ -26,7 +26,7 @@ public class GameController01 : MonoBehaviour
         for (int i = 0; i < MAX_CAR_NUM; i++)
         {
             cars[i].number = i;
-            cars[i].xPos = i;
+            cars[i].vec3 = new Vector3(i,0,0);
             cars[i].species = Species.Car;
             cars[i].obj = GameManager.Resource.Instantiate("Prefab/Car");
         }
