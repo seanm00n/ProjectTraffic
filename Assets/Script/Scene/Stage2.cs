@@ -8,11 +8,9 @@ public class Stage2 : BaseScene
     {
         base.Init();
 
-        SceneType = Define.Scene.GameScene;
+        SceneType = Define.Scene.Stage2;
 
         GameManager.UI.ShowSceneUI<UI_Game>();
-
-        
     }
 
 

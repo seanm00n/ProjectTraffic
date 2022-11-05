@@ -21,7 +21,8 @@ public class Define
         Unknown,
         TitleScene,
         MainScene,
-        GameScene
+        Stage1,
+        Stage2
     }
 
     public enum Sound
