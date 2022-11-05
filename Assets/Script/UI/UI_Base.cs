@@ -5,14 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-<<<<<<<< HEAD:Assets/Script/Lane.cs
-public class Lane : MonoBehaviour
-========
-public class UI_Base : MonoBehaviour
->>>>>>>> 742b1ec7323b96893097c7239163dcc1e06cc464:Assets/Script/UI/UI_Base.cs
+public abstract class UI_Base : MonoBehaviour
 {
     protected Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
 
+    protected abstract void Init();
     protected void Bind<T>(Type _type) where T : UnityEngine.Object
     {
         string[] names = Enum.GetNames(_type);
@@ -36,7 +33,7 @@ public class UI_Base : MonoBehaviour
     {
         UnityEngine.Object[] objects = null;
 
-        if (_objects.TryGetValue(typeof(T), out objects))
+        if (_objects.TryGetValue(typeof(T), out objects) == false)
         {
             return null;
         }
@@ -55,6 +52,5 @@ public class UI_Base : MonoBehaviour
                 Event.OnClicked += action;
                 break;
         }
-
     }
 }

@@ -12,4 +12,9 @@ public class UI_Popup : UI_Base
     {
         GameManager.UI.CloseAllPopupUI();
     }
+
+    protected override void Init()
+    {
+        
+    }
 }

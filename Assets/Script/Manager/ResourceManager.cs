@@ -15,11 +15,11 @@ public class ResourceManager
     // Instance랩핑 및 예외처리
     public GameObject Instantiate(string path)
     {
-        GameObject prefeb = Load<GameObject>($"Prefeb/{path}");
+        GameObject prefeb = Load<GameObject>($"Prefab/{path}");
 
         if (prefeb == null)
         {
-            Debug.Log($"{path} is wrong path");
+            Debug.Log($"Prefab/{path} is wrong path");
             return null;
         }
 
