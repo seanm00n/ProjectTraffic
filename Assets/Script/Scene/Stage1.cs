@@ -58,25 +58,4 @@ public class Stage1 : BaseScene
             { 30, Define.Lain.First },
         };
     }
-
-    IEnumerator Spawn()
-    {
-        for (int i = 0; i < spawnPoint.Count; i++)
-        {
-            switch(spawnPoint[i])
-            {
-                case Define.Lain.None:
-                    break;
-                case Define.Lain.First:
-                    GameObject go = GameManager.Resource.Instantiate("Object/Car");
-                    go.transform.position = SpawnPoint1.position;
-                    break;
-                case Define.Lain.Seceond:
-                    break;
-                case Define.Lain.All:
-                    break;
-
-            }
-        }
-    }
 }

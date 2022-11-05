@@ -11,11 +11,14 @@ public class GameController01 : MonoBehaviour
     [SerializeField]
     int MAX_CAR_NUM;
     CAR[] cars;
+    float timer;
+    [SerializeField]
+    GameObject carPref;
     public struct CAR
     {
         public int number;
-        public Vector3 vec3;
-        public int genTime;
+        public Vector3 pos;
+        public float genTime;
         public Destination destination;
         public Species species;
         public GameObject obj;
@@ -26,16 +29,21 @@ public class GameController01 : MonoBehaviour
         for (int i = 0; i < MAX_CAR_NUM; i++)
         {
             cars[i].number = i;
-            cars[i].vec3 = new Vector3(i,0,0);
+            cars[i].pos = new Vector3(i,0,0);
             cars[i].species = Species.Car;
-            cars[i].obj = GameManager.Resource.Instantiate("Prefab/Car");
         }
         cars[0].destination = Destination.front;
         cars[0].genTime = 1;
     }
     private void Update()
     {
-         // = cars[0].xPos;
+        timer += Time.deltaTime;
+        if(timer < cars[0].genTime)
+        {
+            //cars[0].obj = GameManager.Resource.Instantiate("Prefab/Object/Car", cars[0].pos);
+            cars[0].obj = Instantiate(carPref, cars[0].pos, Quaternion.identity);
+        }
+        
     }
 
 }
