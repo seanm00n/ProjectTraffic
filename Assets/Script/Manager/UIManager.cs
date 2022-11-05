@@ -8,6 +8,18 @@ public class UIManager
     Stack<UI_Popup> _stack = new Stack<UI_Popup>();
     UI_Scene _scene;
 
+    public T MakeSubItem<T>(Transform parent, string name = null) where T : UI_Base
+    {
+        if (name == null)
+            name = typeof(T).Name;
+
+        GameObject go = GameManager.Resource.Instantiate($"UI/SubItem/{name}");
+        T SubItemUI = go.GetOrAddComponent<T>();
+        SubItemUI.transform.parent = parent;
+
+        return SubItemUI;
+    }
+
     public T ShowSceneUI<T>(string name = null) where T : UI_Scene
     {
         if (name == null)
@@ -15,7 +27,7 @@ public class UIManager
             name = typeof(T).Name;
         }
 
-        GameObject go = GameManager.Resource.Instantiate($"UI/Scene{name}");
+        GameObject go = GameManager.Resource.Instantiate($"UI/Scene/{name}");
         T SceneUI = go.GetOrAddComponent<T>();
         _scene = SceneUI;
 
@@ -29,7 +41,7 @@ public class UIManager
             name = typeof(T).Name;
         }
 
-        GameObject go = GameManager.Resource.Instantiate($"UI/Popup{name}");
+        GameObject go = GameManager.Resource.Instantiate($"UI/Popup/{name}");
         T PopipUI = go.GetOrAddComponent<T>();
         _stack.Push(PopipUI);
 

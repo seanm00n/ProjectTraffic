@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class UI_Title : UI_Scene
+public class UI_StageButton : UI_Base
 {
     enum GameObjects
     {
-        TitleImage,
-        StartButton
+        StageButton
     }
 
     private void Start()
@@ -19,15 +17,13 @@ public class UI_Title : UI_Scene
 
     protected override void Init()
     {
-        base.Init();
-
         Bind<GameObject>(typeof(GameObjects));
 
-        Get<GameObject>((int)GameObjects.StartButton).BindEvent(OnButtonClicked);
+        Get<GameObject>((int)GameObjects.StageButton).BindEvent(OnButtonClicked);
     }
 
     void OnButtonClicked(PointerEventData evt)
     {
-        GameManager.Scene.LoadScene(Define.Scene.MainScene);
+        GameManager.Scene.LoadScene(Define.Scene.GameScene);
     }
 }

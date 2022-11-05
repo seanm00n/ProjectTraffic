@@ -10,6 +10,8 @@ public class MainScene : BaseScene
 
         SceneType = Define.Scene.MainScene;
 
-        GameManager.UI.ShowSceneUI<UI_Menu>();
+        UI_Menu MenuUI = GameManager.UI.ShowSceneUI<UI_Menu>();
+
+        GameManager.UI.MakeSubItem<UI_StageButton>(MenuUI.transform);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Util
 {
-    public T GetOrAddComponent<T>(GameObject go) where T : Component
+    static public T GetOrAddComponent<T>(GameObject go) where T : Component
     {
         T component = go.GetComponent<T>();
 
@@ -16,7 +16,7 @@ public class Util
         return component;
     }
 
-    public T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
+    static public T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
     {
         if (recursive)
         {
@@ -48,8 +48,8 @@ public class Util
         return null;
     }
 
-    public GameObject FindChild(GameObject go, string name = null, bool recursive = false)
+    static public GameObject FindChild(GameObject go, string name = null, bool recursive = false)
     {
-        return FindChild<GameObject>(go, name, recursive);
+        return FindChild<Transform>(go, name, recursive).gameObject;
     }
 }
