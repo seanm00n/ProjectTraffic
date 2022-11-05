@@ -51,5 +51,4 @@ public class SoundManager
             audioSource.PlayOneShot(audioClip);
         }
     }
-
 }
