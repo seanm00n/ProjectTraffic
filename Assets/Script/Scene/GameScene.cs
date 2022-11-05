@@ -12,4 +12,6 @@ public class GameScene : BaseScene
 
         GameManager.UI.ShowSceneUI<UI_Game>();
     }
+
+
 }
