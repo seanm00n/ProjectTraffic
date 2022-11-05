@@ -12,13 +12,11 @@ public class CarManager : MonoBehaviour
     public int carNumber;
     public int MAX_CAR_NUM = 10;
 
-    public void Init()
+
+    void Start()
     {
-        if (car == null)
-        {
-            car = new Car[MAX_CAR_NUM];
-            GenerateCar(m_currentCarNum);
-        }
+        car = new Car[MAX_CAR_NUM];
+        GenerateCar(m_currentCarNum);
     }
     void GenerateCar(int p_currentCarNum)
     {

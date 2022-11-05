@@ -12,14 +12,12 @@ public class GameManager : MonoBehaviour
     SceneManagerEx _scene = new SceneManagerEx();
     SoundManager _sound = new SoundManager();
     UIManager _ui = new UIManager();
-    CarManager _car = new CarManager();
 
     public static InputMnager Input { get { return Instance._input; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static SceneManagerEx Scene { get { return Instance._scene; } }
     public static SoundManager Sound { get { return Instance._sound; } }
     public static UIManager UI { get { return Instance._ui; } }
-    public static CarManager Car { get { return Instance._car; } }
 
     void Start()
     {
@@ -47,7 +45,6 @@ public class GameManager : MonoBehaviour
         }
 
         s_instance._sound.Init();
-        s_instance._car.Init();
     }
 
 }
