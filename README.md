@@ -7,4 +7,4 @@ Hoseo 2211 Game Jam A Team repo
 3. merge 이후 작업내용 공유
 ------------------------------
 # Log
-우효ww
+무효ww
