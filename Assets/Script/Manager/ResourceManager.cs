@@ -13,7 +13,7 @@ public class ResourceManager
     
 
     // Instance랩핑 및 예외처리
-    public GameObject Instantiate(string path)
+    public GameObject Instantiate(string path, Vector2 _position)
     {
         GameObject prefeb = Load<GameObject>($"Prefab/{path}");
 
@@ -24,6 +24,7 @@ public class ResourceManager
         }
 
         GameObject go = Object.Instantiate(prefeb);
+        go.transform.position = _position;
         
         return go;
     }
