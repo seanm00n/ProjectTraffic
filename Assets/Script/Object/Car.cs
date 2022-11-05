@@ -1,21 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace CarData 
-{
-    public enum Destination
-    {
-        front, up, down
-    }
-    public enum Species
-    {
-        truck, mini
-    }
-
+using StatusData;
+namespace CarData
+{ 
     public class Car
     {
         int m_number;
+        int m_position;
         Destination m_destination;
         Species m_species;
 
@@ -28,6 +17,11 @@ namespace CarData
         {
             m_destination = p_destination;
         }
+        public void setPosition(int pos)
+        {
+            m_position = pos;
+        }
+
     }
 }
 

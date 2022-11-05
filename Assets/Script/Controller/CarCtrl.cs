@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using CarData;
 using System;
 using Unity.PlasticSCM.Editor.WebApi;
 

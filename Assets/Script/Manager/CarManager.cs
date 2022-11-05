@@ -1,4 +1,5 @@
 using CarData;
+using StatusData;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 public class CarManager : MonoBehaviour
 {
     Destination destination = Destination.front; //차 방향
-    Species species = Species.mini; //차 종류
+    Species species = Species.Car; //차 종류
     Car[] car; //객체 배열
     int m_currentCarNum = 0;
     public int MAX_CAR_NUM = 10;
