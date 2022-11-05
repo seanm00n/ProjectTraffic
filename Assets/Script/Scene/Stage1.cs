@@ -63,7 +63,8 @@ public class Stage1 : BaseScene
     {
         for (int i = 0; i < spawnPoint.Count; i++)
         {
-            switch(spawnPoint[i])
+            GameObject go = GameManager.Resource.Instantiate("Object/Car");
+            switch (spawnPoint[i])
             {
                 case Define.Lain.None:
                     break;
