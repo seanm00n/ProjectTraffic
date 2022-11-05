@@ -22,4 +22,9 @@ public class Car : MonoBehaviour
         if (collision.collider != null)
             moving = false;
     }
+
+    public void SetDir(Define.CarDir _carDir)
+    {
+        carDir = _carDir;
+    }
 }
