@@ -31,4 +31,26 @@ public class Define
         Effect,
         MaxCount
     }
+
+    public enum CarType
+    {
+        SmallCar,
+        Truc
+    }
+
+    public enum CarDir
+    {
+        None,
+        Straight,
+        Left,
+        Right,
+    }
+
+    public enum Lain
+    {
+        None,
+        First,
+        Seceond,
+        All
+    }
 }
