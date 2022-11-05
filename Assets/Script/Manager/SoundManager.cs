@@ -12,12 +12,12 @@ public class SoundManager
 
         if (root == null)
         {
-            root = new GameObject("@sound");
+            root = new GameObject("@Sound");
             Object.DontDestroyOnLoad(root);
 
             string[] sounds = System.Enum.GetNames(typeof(Define.Sound));
 
-            for (int i = 0; i < sounds.Length; i++)
+            for (int i = 0; i < (int)Define.Sound.MaxCount; i++)
             {
                 GameObject go = new GameObject() { name = sounds[i] };
                 _audioSources[i] = go.AddComponent<AudioSource>();

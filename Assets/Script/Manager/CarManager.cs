@@ -12,17 +12,18 @@ public class CarManager : MonoBehaviour
     public int carNumber;
     public int MAX_CAR_NUM = 10;
 
-    [SerializeField]
-    GameObject prefab;//테스트용 프리펩
-    private void Start()
+    public void Init()
     {
-        car = new Car[MAX_CAR_NUM];
-        GenerateCar(m_currentCarNum);
+        if (car == null)
+        {
+            car = new Car[MAX_CAR_NUM];
+            GenerateCar(m_currentCarNum);
+        }
     }
     void GenerateCar(int p_currentCarNum)
     {
         car[p_currentCarNum] = new Car(p_currentCarNum, destination, species);
-        Instantiate(prefab,transform.position ,Quaternion.identity);
+        GameObject prefab = GameManager.Resource.Instantiate("Object/Car");
         m_currentCarNum++;
     }
 }
