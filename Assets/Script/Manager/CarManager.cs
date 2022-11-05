@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class CarManager : MonoBehaviour
 {
-    public Destination destination = Destination.front; //차 방향
-    public Species species = Species.mini; //차 종류
-    public Car[] car; //객체 배열
-    public int m_currentCarNum = 0;
-    public int carNumber;
+    Destination destination = Destination.front; //차 방향
+    Species species = Species.mini; //차 종류
+    Car[] car; //객체 배열
+    int m_currentCarNum = 0;
     public int MAX_CAR_NUM = 10;
 
     [SerializeField]
