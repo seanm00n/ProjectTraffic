@@ -21,7 +21,8 @@ public class Define
         Unknown,
         TitleScene,
         MainScene,
-        GameScene
+        Stage1,
+        Stage2
     }
 
     public enum Sound
@@ -29,5 +30,27 @@ public class Define
         Bgm,
         Effect,
         MaxCount
+    }
+
+    public enum CarType
+    {
+        SmallCar,
+        Truc
+    }
+
+    public enum CarDir
+    {
+        None,
+        Straight,
+        Left,
+        Right,
+    }
+
+    public enum Lain
+    {
+        None,
+        First,
+        Seceond,
+        All
     }
 }

@@ -24,6 +24,6 @@ public class UI_StageButton : UI_Base
 
     void OnButtonClicked(PointerEventData evt)
     {
-        GameManager.Scene.LoadScene(Define.Scene.GameScene);
+        GameManager.Scene.LoadScene(Define.Scene.Stage2);
     }
 }
