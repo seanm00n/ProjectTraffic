@@ -11,6 +11,8 @@ public class Stage2 : BaseScene
         SceneType = Define.Scene.GameScene;
 
         GameManager.UI.ShowSceneUI<UI_Game>();
+
+        
     }
 
 
