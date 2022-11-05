@@ -29,6 +29,11 @@ public class ResourceManager
         return go;
     }
 
+    public GameObject Instantiate(string path)
+    {
+        return Instantiate(path, Vector2.zero);
+    }
+
     // Destroy랩핑 및 예외처리
     public void Destroy(GameObject go)
     {
