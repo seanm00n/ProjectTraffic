@@ -2,21 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Des
+namespace CarData 
 {
-    front, up, down
-}
-public class Car
-{
-    int m_number;
-    Des m_destination;
-    Car(int p_number, Des p_destination)
+    public enum Destination
     {
-        m_number = p_number;
-        m_destination = p_destination;
+        front, up, down
     }
-    void ChangeDestination(Des p_destination)
+    public enum Species
     {
-        m_destination = p_destination;
+        truck, mini
+    }
+
+    public class Car
+    {
+        int m_number;
+        Destination m_destination;
+        Species m_species;
+
+        public Car(int p_number, Destination p_destination, Species p_species)
+        {
+            m_number = p_number;
+            m_destination = p_destination;
+        }
+        public void ChangeDestination(Destination p_destination)
+        {
+            m_destination = p_destination;
+        }
     }
 }
+
+
+
