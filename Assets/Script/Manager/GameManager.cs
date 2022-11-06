@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
 
     static void Init()
     {
-        Time.timeScale = 5;
 
         if (s_instance == null)
         {
