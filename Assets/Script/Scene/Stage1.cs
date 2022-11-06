@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Stage1 : BaseScene
@@ -67,7 +68,8 @@ public class Stage1 : BaseScene
             // 위
             if (_target != null && _target.moving)
             {
-                _target.transform.Translate(Vector2.up * Time.deltaTime);
+                //_target.transform.Translate(Vector2.up * Time.deltaTime);
+                _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint1.position.y,0);
             }
         }
         if (Input.GetKey(KeyCode.DownArrow))
@@ -75,7 +77,8 @@ public class Stage1 : BaseScene
             // 아래
             if (_target != null && _target.moving)
             {
-                _target.transform.Translate(Vector2.down * Time.deltaTime);
+                //_target.transform.Translate(Vector2.down * Time.deltaTime);
+                _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint2.position.y, 0);
             }
             
         }
@@ -92,7 +95,7 @@ public class Stage1 : BaseScene
             { 5, Define.Lain.None },
             { 6, Define.Lain.None },
             { 7, Define.Lain.None },
-            { 8, Define.Lain.None },
+            { 8, Define.Lain.First },
             { 9, Define.Lain.None },
             { 10, Define.Lain.None },
             { 11, Define.Lain.None },
@@ -103,15 +106,15 @@ public class Stage1 : BaseScene
             { 16, Define.Lain.None },
             { 17, Define.Lain.None },
             { 18, Define.Lain.First },
-            { 19, Define.Lain.First },
-            { 20, Define.Lain.None },
+            { 19, Define.Lain.None },
+            { 20, Define.Lain.First },
             { 21, Define.Lain.None },
             { 22, Define.Lain.None },
             { 23, Define.Lain.None },
             { 24, Define.Lain.Seceond },
             { 25, Define.Lain.None },
-            { 26, Define.Lain.None },
-            { 27, Define.Lain.First },
+            { 26, Define.Lain.First },
+            { 27, Define.Lain.None },
             { 28, Define.Lain.Seceond },
             { 29, Define.Lain.None },
             { 30, Define.Lain.First },
