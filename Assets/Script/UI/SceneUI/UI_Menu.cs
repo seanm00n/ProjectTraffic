@@ -38,6 +38,6 @@ public class UI_Menu : UI_Scene
     }
     void GoStage3(PointerEventData evt)
     {
-        GameManager.Scene.LoadScene(Define.Scene.Stage3);
+        GameManager.UI.ShowPopupUI<UI_Ready>();
     }
 }
