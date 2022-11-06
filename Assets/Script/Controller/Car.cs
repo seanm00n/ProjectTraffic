@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    Define.CarDir carDir;
-    Define.CarType carType;
+    public Define.CarDir carDir;
+    public Define.CarType carType;
     public float speed = 0;
     public bool moving = true;
 

@@ -16,7 +16,7 @@ public class Stage1 : BaseScene
     Car _target = null;
 
     int _carMaxIdx = 8;
-
+    public int score = 0;
     Transform Cars;
 
     UI_Game gameUI;
@@ -173,10 +173,10 @@ public class Stage1 : BaseScene
                 Car car = Cars.GetChild(j).GetComponent<Car>();
                 GameFinish = car.moving;
             }
-
             if (!GameFinish)
             {
                 GameManager.UI.ShowPopupUI<UI_Finish>();
+                CheckScore();
                 StopAllCoroutines();
             }
 
@@ -200,5 +200,28 @@ public class Stage1 : BaseScene
 
         go.GetOrAddComponent<Car>().SetDir(carDir.Dequeue());
         go.transform.parent = Cars.transform;
+    }
+
+    void CheckScore()
+    {
+        RaycastHit2D[] hits1 = Physics2D.RaycastAll(SpawnPoint1.position,Vector2.right,20f);
+        RaycastHit2D[] hits2 = Physics2D.RaycastAll(SpawnPoint2.position, Vector2.right, 20f);
+        for (int i = 0; i < hits1.Length; i++)
+        {
+            if (hits1[i].collider.name == "Car(Clone)")
+            {
+                if(hits1[i].transform.GetComponent<Car>().carDir == Define.CarDir.Left)
+                score++;
+            }
+        }
+        for (int i = 0; i < hits2.Length; i++)
+        {
+            if (hits1[i].collider.name == "Car(Clone)")
+            {
+                if (hits1[i].transform.GetComponent<Car>().carDir == Define.CarDir.Right)
+                    score++;
+            }
+        }
+        Debug.Log(score);
     }
 }

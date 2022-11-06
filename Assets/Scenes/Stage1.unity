@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 386216682}
   m_Layer: 7
   m_Name: StopLine
-  m_TagString: Untagged
+  m_TagString: StopLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -662,6 +662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnPoint1: {fileID: 2146178207}
   SpawnPoint2: {fileID: 709056374}
+  score: 0
 --- !u!4 &2021239204
 Transform:
   m_ObjectHideFlags: 0
