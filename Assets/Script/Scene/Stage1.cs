@@ -18,6 +18,8 @@ public class Stage1 : BaseScene
 
     Transform Cars;
 
+    UI_Game gameUI;
+
     override protected void Init()
     {
         base.Init();
@@ -30,7 +32,7 @@ public class Stage1 : BaseScene
 
         SceneType = Define.Scene.Stage1;
 
-        GameManager.UI.ShowSceneUI<UI_Game>();
+        gameUI = GameManager.UI.ShowSceneUI<UI_Game>();
 
         BindSpawnPoint();
         BindInformation();
@@ -78,8 +80,7 @@ public class Stage1 : BaseScene
             
         }
     }
-       
-
+    
     void BindSpawnPoint()
     {
         spawnPoint = new Dictionary<int, Define.Lain>()

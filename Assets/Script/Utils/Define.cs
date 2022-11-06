@@ -62,5 +62,6 @@ public class Define
         None,
         First,
         Seceond,
+        Third
     }
 }

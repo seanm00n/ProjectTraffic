@@ -42,6 +42,6 @@ public class ResourceManager
             Debug.Log($"{go} is wrong game object");
             return;
         }
-        Destroy(go.gameObject);
+        Object.Destroy(go.gameObject);
     }
 }
