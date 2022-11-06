@@ -68,13 +68,35 @@ public class Stage2 : BaseScene
     {
         if (_target != null && _target.moving)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                _target.transform.Translate(Vector2.up * Time.deltaTime);
+                //_target.transform.Translate(Vector2.up * Time.deltaTime);
+                if (_target.transform.position.y == SpawnPoint1.position.y)
+                {
+                    return;
+                }else if (_target.transform.position.y == SpawnPoint2.position.y)
+                {
+                    _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint1.position.y, 0);
+                }else if(_target.transform.position.y == SpawnPoint3.position.y)
+                {
+                    _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint2.position.y, 0);
+                }
             }
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                _target.transform.Translate(Vector2.down * Time.deltaTime);
+                //_target.transform.Translate(Vector2.down * Time.deltaTime);
+                if (_target.transform.position.y == SpawnPoint3.position.y)
+                {
+                    return;
+                }else if (_target.transform.position.y == SpawnPoint2.position.y)
+                {
+                    _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint3.position.y, 0);
+                }
+                else if (_target.transform.position.y == SpawnPoint1.position.y)
+                {
+                    _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint2.position.y, 0);
+                }
+                
             }
         }
     }

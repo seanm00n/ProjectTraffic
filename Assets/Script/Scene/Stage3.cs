@@ -262,6 +262,5 @@ public class Stage3 : BaseScene
             }
         }
         Debug.Log(score);
-        finishUI.SetScore(score, _carMaxIdx);
     }
 }
