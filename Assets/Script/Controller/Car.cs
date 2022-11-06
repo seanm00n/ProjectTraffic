@@ -52,7 +52,7 @@ public class Car : MonoBehaviour
     {
         if (collision.gameObject.layer == 6 && collision.GetComponent<Car>().moving)
         {
-            
+            GameManager.UI.ShowPopupUI<UI_Fail>();
         }
     }
 }
