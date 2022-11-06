@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Stage1 : BaseScene
 {
@@ -15,7 +16,7 @@ public class Stage1 : BaseScene
     Car _target = null;
 
     int _carMaxIdx = 8;
-
+    public int score = 0;
     Transform Cars;
 
     UI_Game gameUI;
@@ -66,11 +67,13 @@ public class Stage1 : BaseScene
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                _target.transform.Translate(Vector2.up * Time.deltaTime);
+                //_target.transform.Translate(Vector2.up * Time.deltaTime);
+                _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint1.position.y, 0);
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                _target.transform.Translate(Vector2.down * Time.deltaTime);
+                //_target.transform.Translate(Vector2.down * Time.deltaTime);
+                _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint2.position.y, 0);
             }
         }
     }
@@ -169,6 +172,7 @@ public class Stage1 : BaseScene
             if (!GameFinish)
             {
                 GameManager.UI.ShowPopupUI<UI_Finish>();
+                CheckScore();
                 StopAllCoroutines();
             }
 
@@ -192,5 +196,28 @@ public class Stage1 : BaseScene
 
         go.GetOrAddComponent<Car>().SetDir(carDir.Dequeue());
         go.transform.parent = Cars.transform;
+    }
+
+    void CheckScore()
+    {
+        RaycastHit2D[] hits1 = Physics2D.RaycastAll(SpawnPoint1.position, Vector2.right, 20f);
+        RaycastHit2D[] hits2 = Physics2D.RaycastAll(SpawnPoint2.position, Vector2.right, 20f);
+        for (int i = 0; i < hits1.Length; i++)
+        {
+            if (hits1[i].collider.name == "Car(Clone)")
+            {
+                if (hits1[i].transform.GetComponent<Car>().carDir == Define.CarDir.Left)
+                    score++;
+            }
+        }
+        for (int i = 0; i < hits2.Length; i++)
+        {
+            if (hits1[i].collider.name == "Car(Clone)")
+            {
+                if (hits1[i].transform.GetComponent<Car>().carDir == Define.CarDir.Right)
+                    score++;
+            }
+        }
+        Debug.Log(score);
     }
 }
