@@ -11,6 +11,11 @@ public class SceneManagerEx
         SceneManager.LoadScene(GetSceneName(scene));
     }
 
+    public void ReLoadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public string GetSceneName(Define.Scene scene)
     {
         return System.Enum.GetName(typeof(Define.Scene), scene);

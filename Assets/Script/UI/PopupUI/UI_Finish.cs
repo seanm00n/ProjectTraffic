@@ -9,8 +9,7 @@ public class UI_Finish : UI_Popup
     {
         FinishPannel,
         RecordImage,
-        RecordText,
-        ScoreText,
+        ScoreImage,
         FinishButton
     }
 

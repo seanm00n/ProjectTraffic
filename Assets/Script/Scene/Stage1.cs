@@ -62,22 +62,16 @@ public class Stage1 : BaseScene
     // 키보드
     void OnKeyEvenet()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (_target != null && _target.moving)
         {
-            // 위
-            if (_target != null && _target.moving)
+            if (Input.GetKey(KeyCode.UpArrow))
             {
                 _target.transform.Translate(Vector2.up * Time.deltaTime);
             }
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            // 아래
-            if (_target != null && _target.moving)
+            if (Input.GetKey(KeyCode.DownArrow))
             {
                 _target.transform.Translate(Vector2.down * Time.deltaTime);
             }
-            
         }
     }
     

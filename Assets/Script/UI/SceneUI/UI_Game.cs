@@ -28,6 +28,8 @@ public class UI_Game : UI_Scene
 
     void OnPopupMenuEvenet(PointerEventData evt)
     {
+        Time.timeScale = 0;
+        GameManager.UI.ClosePopupUI();
         GameManager.UI.ShowPopupUI<UI_PopupMenu>();
     }
 }

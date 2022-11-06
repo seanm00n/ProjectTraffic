@@ -9,6 +9,27 @@ public class Car : MonoBehaviour
 
     public bool moving = true;
 
+    private void Start()
+    {
+        Init();
+    }
+
+    void Init()
+    {
+        switch (carDir)
+        {
+            case Define.CarDir.Straight:
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Resource.Load<Sprite>("Graphic/Arrow_R");
+                break;
+            case Define.CarDir.Left:
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Resource.Load<Sprite>("Graphic/Arrow_U");
+                break;
+            case Define.CarDir.Right:
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Resource.Load<Sprite>("Graphic/Arrow_D");
+                break;
+        }
+    }
+
     private void Update()
     {
         if(moving)
@@ -25,5 +46,13 @@ public class Car : MonoBehaviour
     public void SetDir(Define.CarDir _carDir)
     {
         carDir = _carDir;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 6 && collision.GetComponent<Car>().moving)
+        {
+            
+        }
     }
 }
