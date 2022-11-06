@@ -17,7 +17,7 @@ public class Car : MonoBehaviour
         speed += Time.deltaTime;
         if(moving)
         {
-            //transform.Translate(Vector3.right * Time.deltaTime * 1.5f);
+            transform.Translate(Vector3.right * Time.deltaTime * 1.5f);
             transform.position = new Vector3
                 ((float)Math.Truncate(speed), transform.position.y, transform.position.z);
         }
