@@ -69,11 +69,13 @@ public class Stage1 : BaseScene
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                _target.transform.Translate(Vector2.up * Time.deltaTime);
+                //_target.transform.Translate(Vector2.up * Time.deltaTime);
+                _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint1.position.y, 0);
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                _target.transform.Translate(Vector2.down * Time.deltaTime);
+                //_target.transform.Translate(Vector2.down * Time.deltaTime);
+                _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint2.position.y, 0);
             }
         }
     }
@@ -208,7 +210,8 @@ public class Stage1 : BaseScene
         {
             if (hits1[i].collider.name == "Car(Clone)")
             {
-                if (hits1[i].transform.GetComponent<Car>().carDir == Define.CarDir.Left)
+                if (hits1[i].transform.GetComponent<Car>().carDir == Define.CarDir.Left 
+                    || hits1[i].transform.GetComponent<Car>().carDir == Define.CarDir.Straight)
                     score++;
             }
         }
@@ -216,12 +219,13 @@ public class Stage1 : BaseScene
         {
             if (hits2[i].collider.name == "Car(Clone)")
             {
-                if (hits2[i].transform.GetComponent<Car>().carDir == Define.CarDir.Right)
+                if (hits2[i].transform.GetComponent<Car>().carDir == Define.CarDir.Right
+                    || hits2[i].transform.GetComponent<Car>().carDir == Define.CarDir.Straight)
                     score++;
             }
         }
         Debug.Log(score);
         finishUI.SetScore(score, _carMaxIdx);
-        GameManager.UI.ShowPopupUI<UI_Fail>();
+        
     }
 }
