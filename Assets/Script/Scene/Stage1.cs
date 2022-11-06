@@ -15,11 +15,13 @@ public class Stage1 : BaseScene
 
     Car _target = null;
 
-    int _carMaxIdx = 8;
+    int _carMaxIdx = 9;
     public int score = 0;
     Transform Cars;
 
     UI_Game gameUI;
+
+    UI_Finish finishUI;
 
     override protected void Init()
     {
@@ -67,13 +69,11 @@ public class Stage1 : BaseScene
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                //_target.transform.Translate(Vector2.up * Time.deltaTime);
-                _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint1.position.y, 0);
+                _target.transform.Translate(Vector2.up * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                //_target.transform.Translate(Vector2.down * Time.deltaTime);
-                _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint2.position.y, 0);
+                _target.transform.Translate(Vector2.down * Time.deltaTime);
             }
         }
     }
@@ -171,7 +171,7 @@ public class Stage1 : BaseScene
 
             if (!GameFinish)
             {
-                GameManager.UI.ShowPopupUI<UI_Finish>();
+                finishUI = GameManager.UI.ShowPopupUI<UI_Finish>();
                 CheckScore();
                 StopAllCoroutines();
             }
@@ -200,6 +200,8 @@ public class Stage1 : BaseScene
 
     void CheckScore()
     {
+        Debug.DrawRay(SpawnPoint1.position, Vector2.right);
+        Debug.DrawRay(SpawnPoint2.position, Vector2.right);
         RaycastHit2D[] hits1 = Physics2D.RaycastAll(SpawnPoint1.position, Vector2.right, 20f);
         RaycastHit2D[] hits2 = Physics2D.RaycastAll(SpawnPoint2.position, Vector2.right, 20f);
         for (int i = 0; i < hits1.Length; i++)
@@ -212,12 +214,13 @@ public class Stage1 : BaseScene
         }
         for (int i = 0; i < hits2.Length; i++)
         {
-            if (hits1[i].collider.name == "Car(Clone)")
+            if (hits2[i].collider.name == "Car(Clone)")
             {
-                if (hits1[i].transform.GetComponent<Car>().carDir == Define.CarDir.Right)
+                if (hits2[i].transform.GetComponent<Car>().carDir == Define.CarDir.Right)
                     score++;
             }
         }
         Debug.Log(score);
+        finishUI.SetScore(score, _carMaxIdx);
     }
 }

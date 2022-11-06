@@ -36,8 +36,7 @@ public class Car : MonoBehaviour
         if(moving)
         {
             speed += Time.deltaTime;
-            //transform.Translate(Vector3.right * Time.deltaTime * 1.5f);
-            transform.position = new Vector3(((float)Math.Truncate(speed) * 1.6f) - 8, transform.position.y, transform.position.z);
+            transform.Translate(Vector3.right * Time.deltaTime * 1.5f);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -55,7 +54,7 @@ public class Car : MonoBehaviour
     {
         if (collision.gameObject.layer == 6 && collision.GetComponent<Car>().moving)
         {
-            
+            GameManager.UI.ShowPopupUI<UI_Fail>();
         }
     }
 }
