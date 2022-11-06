@@ -6,9 +6,8 @@ using UnityEngine.EventSystems;
 
 public class InputMnager
 {
+    public Action KeyAction;
     public Action<Define.clickEvent> MouseAction;
-
-    bool mousePressed;
 
     public void OnUpdate()
     {
@@ -17,25 +16,15 @@ public class InputMnager
         {
             return;
         }
-        // 마우스 이벤트가 있는지 체크
-        if (MouseAction != null)
+
+        // 키보드 이벤트
+        if (Input.anyKey && KeyAction != null)
+            KeyAction.Invoke();
+
+        // 마우스 이벤트
+        if (MouseAction != null && Input.GetMouseButtonDown(0))
         {
-            // 다운
-            if (Input.GetMouseButtonDown(0))
-            {
-                MouseAction.Invoke(Define.clickEvent.Down);
-                mousePressed = true;
-            }
-            // 드래그
-            if (Input.GetMouseButtonDown(0) && mousePressed)
-            {
-                MouseAction.Invoke(Define.clickEvent.Drag);
-            }
-            // 업
-            if (Input.GetMouseButtonUp(0))
-            {
-                MouseAction.Invoke(Define.clickEvent.Up);
-            }
+            MouseAction.Invoke(Define.clickEvent.Down);
         }
     }
 }

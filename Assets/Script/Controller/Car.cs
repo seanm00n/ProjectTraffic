@@ -7,7 +7,7 @@ public class Car : MonoBehaviour
     Define.CarDir carDir;
     Define.CarType carType;
 
-    bool moving = true;
+    public bool moving = true;
 
     private void Update()
     {
@@ -16,10 +16,9 @@ public class Car : MonoBehaviour
             transform.Translate(Vector3.right * Time.deltaTime * 1.5f);
         }
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider != null)
+        if (collision.gameObject.layer == (int)Define.Layer.Car || collision.gameObject.layer == (int)Define.Layer.FinishLine)
             moving = false;
     }
 

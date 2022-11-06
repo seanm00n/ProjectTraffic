@@ -7,13 +7,23 @@ public class Define
     public enum clickEvent
     {
         Down,
-        Drag,
-        Up
+    }
+
+    public enum KeyEvent
+    {
+        Up,
+        Down
     }
 
     public enum UIEvent
     {
         Click
+    }
+
+    public enum Layer
+    {
+        Car = 6,
+        FinishLine = 7,
     }
 
     public enum Scene
@@ -22,7 +32,8 @@ public class Define
         TitleScene,
         MainScene,
         Stage1,
-        Stage2
+        Stage2,
+        Stage3,
     }
 
     public enum Sound
@@ -51,6 +62,5 @@ public class Define
         None,
         First,
         Seceond,
-        All
     }
 }

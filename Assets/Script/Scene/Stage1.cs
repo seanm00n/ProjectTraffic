@@ -12,12 +12,21 @@ public class Stage1 : BaseScene
     Dictionary<int, Define.Lain> spawnPoint;
     Queue<Define.CarDir> carDir;
 
+    Car _target = null;
+
+    int _carMaxIdx = 8;
+
+    Transform Cars;
+
     override protected void Init()
     {
         base.Init();
 
         GameManager.Input.MouseAction -= OnMouseEvent;
         GameManager.Input.MouseAction += OnMouseEvent;
+
+        GameManager.Input.KeyAction -= OnKeyEvenet;
+        GameManager.Input.KeyAction += OnKeyEvenet;
 
         SceneType = Define.Scene.Stage1;
 
@@ -26,14 +35,50 @@ public class Stage1 : BaseScene
         BindSpawnPoint();
         BindInformation();
 
+        Cars = GameObject.Find("@Cars").transform;
+
         StartCoroutine(Spawn());
+
     }
 
+    // 마우스
     void OnMouseEvent(Define.clickEvent evt)
     {
-        Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(point.ToString());
+        Vector2 ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero);
+        
+        if (hit.collider == null)
+        {
+            _target = null;
+        }
+        else
+        {
+            _target = hit.collider.gameObject.GetOrAddComponent<Car>();
+        }
     }
+
+    // 키보드
+    void OnKeyEvenet()
+    {
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            // 위
+            if (_target != null && _target.moving)
+            {
+                _target.transform.Translate(Vector2.up * Time.deltaTime);
+            }
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            // 아래
+            if (_target != null && _target.moving)
+            {
+                _target.transform.Translate(Vector2.down * Time.deltaTime);
+            }
+            
+        }
+    }
+       
 
     void BindSpawnPoint()
     {
@@ -95,21 +140,61 @@ public class Stage1 : BaseScene
                     break;
                 case Define.Lain.First:
                     {
-                        GameObject go = GameManager.Resource.Instantiate("Object/Car");
-                        go.transform.position = SpawnPoint1.position;
-                        go.GetOrAddComponent<Car>().SetDir(carDir.Dequeue());
+                        SpawnCar(1);
                     }
                     break;
                 case Define.Lain.Seceond:
                     {
-                        GameObject go = GameManager.Resource.Instantiate("Object/Car");
-                        go.transform.position = SpawnPoint2.position;
-                        go.GetOrAddComponent<Car>().SetDir(carDir.Dequeue());
+                        SpawnCar(2);
                     }
                     break;
             }
 
+            if (Cars.childCount == _carMaxIdx)
+            {
+                StartCoroutine(FinishCheck());
+                StopCoroutine(Spawn());
+            }
             yield return new WaitForSeconds(1.5f);
         }
+    }
+
+    IEnumerator FinishCheck()
+    {
+        while(true)
+        {
+            bool GameFinish = false;
+            for (int j = 0; j < Cars.childCount; ++j)
+            {
+                Car car = Cars.GetChild(j).GetComponent<Car>();
+                GameFinish = car.moving;
+            }
+
+            if (!GameFinish)
+            {
+                GameManager.UI.ShowPopupUI<UI_Finish>();
+                StopAllCoroutines();
+            }
+
+            yield return new WaitForSeconds(.5f);
+        }
+    }
+
+    void SpawnCar(int _lain)
+    {
+        GameObject go = GameManager.Resource.Instantiate("Object/Car");
+
+        switch(_lain)
+        {
+            case 1:
+                go.transform.position = SpawnPoint1.position;
+                break;
+            case 2:
+                go.transform.position = SpawnPoint2.position;
+                break;
+        }
+
+        go.GetOrAddComponent<Car>().SetDir(carDir.Dequeue());
+        go.transform.parent = Cars.transform;
     }
 }
