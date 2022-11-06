@@ -9,7 +9,9 @@ public class UI_Title : UI_Scene
     enum GameObjects
     {
         BackGroundImage,
-        StartButton
+        StartButton,
+        SettingButton,
+        FinishButton
     }
 
     private void Start()
@@ -23,11 +25,16 @@ public class UI_Title : UI_Scene
 
         Bind<GameObject>(typeof(GameObjects));
 
-        Get<GameObject>((int)GameObjects.StartButton).BindEvent(OnButtonClicked);
+        Get<GameObject>((int)GameObjects.StartButton).BindEvent(OnStartButtonClicked);
+        Get<GameObject>((int)GameObjects.FinishButton).BindEvent(OnFinishButtonClicked);
     }
 
-    void OnButtonClicked(PointerEventData evt)
+    void OnStartButtonClicked(PointerEventData evt)
     {
         GameManager.Scene.LoadScene(Define.Scene.MainScene);
+    }
+    void OnFinishButtonClicked(PointerEventData evt)
+    {
+        Application.Quit();
     }
 }

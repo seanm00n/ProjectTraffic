@@ -7,6 +7,7 @@ public class UI_Menu : UI_Scene
 {
     enum GameObjects
     {
+        MainPannel,
         MenuPannel,
         StageButton1,
         StageButton2,
