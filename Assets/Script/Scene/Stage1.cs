@@ -52,7 +52,7 @@ public class Stage1 : BaseScene
             { 24, Define.Lain.Seceond },
             { 25, Define.Lain.None },
             { 26, Define.Lain.None },
-            { 27, Define.Lain.All },
+            { 27, Define.Lain.None },
             { 28, Define.Lain.None },
             { 29, Define.Lain.None },
             { 30, Define.Lain.First },
