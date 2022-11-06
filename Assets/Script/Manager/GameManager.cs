@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        _input.OnUpdate();    
+        _input.OnUpdate();
     }
 
     static void Init()
