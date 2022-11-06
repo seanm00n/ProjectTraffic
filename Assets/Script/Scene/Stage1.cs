@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Stage1 : BaseScene
 {
@@ -15,7 +16,7 @@ public class Stage1 : BaseScene
     Car _target = null;
 
     int _carMaxIdx = 8;
-
+    public int score = 0;
     Transform Cars;
 
     UI_Game gameUI;
@@ -66,11 +67,13 @@ public class Stage1 : BaseScene
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                _target.transform.Translate(Vector2.up * Time.deltaTime);
+                //_target.transform.Translate(Vector2.up * Time.deltaTime);
+                _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint1.position.y, 0);
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                _target.transform.Translate(Vector2.down * Time.deltaTime);
+                //_target.transform.Translate(Vector2.down * Time.deltaTime);
+                _target.transform.position = new Vector3(_target.transform.position.x, SpawnPoint2.position.y, 0);
             }
         }
     }
@@ -86,7 +89,7 @@ public class Stage1 : BaseScene
             { 5, Define.Lain.None },
             { 6, Define.Lain.None },
             { 7, Define.Lain.None },
-            { 8, Define.Lain.None },
+            { 8, Define.Lain.First },
             { 9, Define.Lain.None },
             { 10, Define.Lain.None },
             { 11, Define.Lain.None },
@@ -97,15 +100,15 @@ public class Stage1 : BaseScene
             { 16, Define.Lain.None },
             { 17, Define.Lain.None },
             { 18, Define.Lain.First },
-            { 19, Define.Lain.First },
-            { 20, Define.Lain.None },
+            { 19, Define.Lain.None },
+            { 20, Define.Lain.First },
             { 21, Define.Lain.None },
             { 22, Define.Lain.None },
             { 23, Define.Lain.None },
             { 24, Define.Lain.Seceond },
             { 25, Define.Lain.None },
-            { 26, Define.Lain.None },
-            { 27, Define.Lain.First },
+            { 26, Define.Lain.First },
+            { 27, Define.Lain.None },
             { 28, Define.Lain.Seceond },
             { 29, Define.Lain.None },
             { 30, Define.Lain.First },
@@ -116,6 +119,7 @@ public class Stage1 : BaseScene
     {
         carDir = new Queue<Define.CarDir>();
         carDir.Enqueue(Define.CarDir.Straight);
+        carDir.Enqueue(Define.CarDir.Right);
         carDir.Enqueue(Define.CarDir.Left);
         carDir.Enqueue(Define.CarDir.Straight);
         carDir.Enqueue(Define.CarDir.Right);
@@ -168,6 +172,7 @@ public class Stage1 : BaseScene
             if (!GameFinish)
             {
                 GameManager.UI.ShowPopupUI<UI_Finish>();
+                CheckScore();
                 StopAllCoroutines();
             }
 
@@ -191,5 +196,28 @@ public class Stage1 : BaseScene
 
         go.GetOrAddComponent<Car>().SetDir(carDir.Dequeue());
         go.transform.parent = Cars.transform;
+    }
+
+    void CheckScore()
+    {
+        RaycastHit2D[] hits1 = Physics2D.RaycastAll(SpawnPoint1.position, Vector2.right, 20f);
+        RaycastHit2D[] hits2 = Physics2D.RaycastAll(SpawnPoint2.position, Vector2.right, 20f);
+        for (int i = 0; i < hits1.Length; i++)
+        {
+            if (hits1[i].collider.name == "Car(Clone)")
+            {
+                if (hits1[i].transform.GetComponent<Car>().carDir == Define.CarDir.Left)
+                    score++;
+            }
+        }
+        for (int i = 0; i < hits2.Length; i++)
+        {
+            if (hits1[i].collider.name == "Car(Clone)")
+            {
+                if (hits1[i].transform.GetComponent<Car>().carDir == Define.CarDir.Right)
+                    score++;
+            }
+        }
+        Debug.Log(score);
     }
 }

@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    Define.CarDir carDir;
-    Define.CarType carType;
-
+    public Define.CarDir carDir;
+    public Define.CarType carType;
+    public float speed = 0;
     public bool moving = true;
 
     private void Start()
@@ -34,7 +35,9 @@ public class Car : MonoBehaviour
     {
         if(moving)
         {
-            transform.Translate(Vector3.right * Time.deltaTime * 1.5f);
+            speed += Time.deltaTime;
+            //transform.Translate(Vector3.right * Time.deltaTime * 1.5f);
+            transform.position = new Vector3(((float)Math.Truncate(speed) * 1.6f) - 8, transform.position.y, transform.position.z);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

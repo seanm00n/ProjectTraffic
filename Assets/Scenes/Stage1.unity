@@ -316,7 +316,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.4, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &386216683
 Transform:
@@ -662,6 +662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnPoint1: {fileID: 2146178207}
   SpawnPoint2: {fileID: 709056374}
+  score: 0
 --- !u!4 &2021239204
 Transform:
   m_ObjectHideFlags: 0
