@@ -10,10 +10,16 @@ public class GameController01 : MonoBehaviour
 {
     [SerializeField]
     int MAX_CAR_NUM;
-    CAR[] cars;
-    float timer;
     [SerializeField]
     GameObject carPref;
+    [SerializeField]
+    Transform start1; 
+    [SerializeField]
+    Transform start2;
+
+    CAR[] cars;
+    float timer;
+
     public struct CAR
     {
         public int number;
@@ -22,6 +28,7 @@ public class GameController01 : MonoBehaviour
         public Destination destination;
         public Species species;
         public GameObject obj;
+        public bool isRun;
     }
     private void Start()
     {
@@ -29,19 +36,25 @@ public class GameController01 : MonoBehaviour
         for (int i = 0; i < MAX_CAR_NUM; i++)
         {
             cars[i].number = i;
-            cars[i].pos = new Vector3(i,0,0);
+            cars[i].pos = new Vector3(-8,(i%2==0)?start2.position.y:start1.position.y,0);
             cars[i].species = Species.Car;
+            cars[i].isRun = false;
         }
         cars[0].destination = Destination.front;
-        cars[0].genTime = 1;
+        cars[0].genTime = 3;
     }
     private void Update()
     {
         timer += Time.deltaTime;
-        if(timer < cars[0].genTime)
+        if(cars[0].genTime < timer)
         {
-            //cars[0].obj = GameManager.Resource.Instantiate("Prefab/Object/Car", cars[0].pos);
-            cars[0].obj = Instantiate(carPref, cars[0].pos, Quaternion.identity);
+            if (!cars[0].isRun)
+            {
+                cars[0].obj = Instantiate(carPref, cars[0].pos, Quaternion.identity);
+                cars[0].isRun = true;
+            }
+            
+            
         }
         
     }
