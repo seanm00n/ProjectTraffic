@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class UI_Finish : UI_Popup
 {
-
-    Image scoreSprite;
     enum GameObjects
     {
         FinishPannel,
@@ -30,9 +28,6 @@ public class UI_Finish : UI_Popup
         GameObject button = Get<GameObject>((int)GameObjects.FinishButton);
 
         button.BindEvent(OnClickedEvent);
-
-        GameObject scoreImage = Get<GameObject>((int)GameObjects.ScoreImage);
-        scoreSprite = scoreImage.GetComponent<Image>();
     }
 
     void OnClickedEvent(PointerEventData evt)
@@ -44,21 +39,24 @@ public class UI_Finish : UI_Popup
     {
         float result = (float)score / (float)maxCarNum;
 
+        Bind<GameObject>(typeof(GameObjects));
+        Image scoreImage = Get<GameObject>((int)GameObjects.ScoreImage).GetComponent<Image>();
+
         if (result > 0.8f)
         {
-            scoreSprite.sprite = GameManager.Resource.Load<Sprite>("Graphic/Clear_Score3");
+            scoreImage.sprite = GameManager.Resource.Load<Sprite>("Graphic/Clear_Score3");
         }
         else if (result > 0.6f)
         {
-            scoreSprite.sprite = GameManager.Resource.Load<Sprite>("Graphic/Clear_Score2");
+            scoreImage.sprite = GameManager.Resource.Load<Sprite>("Graphic/Clear_Score2");
         }
         else if (result > 0.4f)
         {
-            scoreSprite.sprite = GameManager.Resource.Load<Sprite>("Graphic/Clear_Score1");
+            scoreImage.sprite = GameManager.Resource.Load<Sprite>("Graphic/Clear_Score1");
         }
         else
         {
-            scoreSprite.sprite = GameManager.Resource.Load<Sprite>("Graphic/Clear_Score0");
+            scoreImage.sprite = GameManager.Resource.Load<Sprite>("Graphic/Clear_Score0");
         }
     }
 }
