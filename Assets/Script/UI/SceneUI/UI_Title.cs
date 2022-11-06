@@ -8,7 +8,7 @@ public class UI_Title : UI_Scene
 {
     enum GameObjects
     {
-        TitleImage,
+        BackGroundImage,
         StartButton
     }
 
