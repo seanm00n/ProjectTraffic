@@ -1,5 +1,5 @@
 # ProjectTraffic
-Hoseo 2211 Game Jam A Team repo
+Hoseo 2022 Game Jam A Team repo
 
 # Rule
 1. feature 브랜치는 본인것인지 확인
